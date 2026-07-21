@@ -6,33 +6,40 @@ const DemoCTA: React.FC = () => {
   const { t } = useTranslation();
 
   return (
-    <section className="bg-gold relative overflow-hidden border-y border-white/10">
-      <div className="max-w-7xl mx-auto px-6 py-16 md:py-24 flex flex-col md:flex-row items-center justify-between gap-12 relative z-10">
-        <div className="text-center md:text-left max-w-2xl">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-navy tracking-tight mb-6 uppercase leading-tight">
-            {t('demo_cta_title', 'Ready to transform?')}
+    <section className="bg-[#0a0f16] relative overflow-hidden border-y border-gold/10">
+      <div className="max-w-7xl mx-auto px-6 py-24 md:py-32 flex flex-col md:flex-row items-center justify-between gap-16 relative z-10">
+        <div className="text-center md:text-left max-w-3xl">
+          <div className="flex items-center gap-4 mb-8 justify-center md:justify-start">
+            <div className="w-12 h-px bg-gold" />
+            <span className="text-gold font-black tracking-[0.5em] uppercase text-[10px]">Initialize</span>
+          </div>
+          <h2 className="text-5xl md:text-8xl font-black text-secondary tracking-tighter mb-8 uppercase leading-[0.85]">
+            {t('demo_cta_title')}
           </h2>
-          <p className="text-sm md:text-lg font-bold text-navy/70 uppercase tracking-[0.2em] leading-relaxed">
-            {t('demo_cta_sub', 'Join the future of operational intelligence with Operix.')}
+          <p className="text-xl md:text-2xl font-medium text-secondary/40 uppercase tracking-tight leading-snug max-w-xl">
+            {t('demo_cta_sub')}
           </p>
         </div>
 
         <div className="shrink-0">
           <Link
             to="/booking"
-            className="group relative inline-flex items-center justify-center px-12 py-6 bg-navy text-gold font-black uppercase tracking-[0.3em] text-sm transition-all duration-500 hover:bg-navy/90 hover:-translate-y-1 active:scale-95 shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:shadow-gold/20"
+            className="group relative inline-flex items-center justify-center px-16 py-8 bg-gold text-[#05070a] font-black uppercase tracking-[0.5em] text-xs transition-all duration-700 hover:bg-white hover:scale-105 active:scale-95 shadow-[0_30px_60px_rgba(197,160,89,0.2)]"
           >
-            <span className="relative z-10">{t('demoBtn', 'BOOK A DEMO')}</span>
-            <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+            <span className="relative z-10">{t('demoBtn')}</span>
+            <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity" />
           </Link>
         </div>
       </div>
 
-      {/* High-Contrast Design Elements */}
-      <div className="absolute right-0 top-0 bottom-0 w-1/2 bg-gradient-to-l from-white/10 to-transparent skew-x-12 translate-x-32" />
-      <div className="absolute left-0 top-0 bottom-0 w-1/4 bg-gradient-to-r from-navy/5 to-transparent -skew-x-12 -translate-x-16" />
-      <div className="absolute top-0 left-0 w-full h-px bg-white/20" />
-      <div className="absolute bottom-0 left-0 w-full h-px bg-black/10" />
+      {/* Industrial Design Elements */}
+      <div className="absolute inset-0 opacity-[0.02]"
+        style={{
+          backgroundImage: `linear-gradient(to right, #c5a059 1px, transparent 1px), linear-gradient(to bottom, #c5a059 1px, transparent 1px)`,
+          backgroundSize: '40px 40px'
+        }}
+      />
+      <div className="absolute -bottom-1/2 -right-1/4 w-full h-full bg-gold/5 blur-[120px] rounded-full" />
     </section>
   );
 };

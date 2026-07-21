@@ -1,6 +1,7 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { AnimatePresence } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -20,6 +21,31 @@ import Contact from './pages/Contact';
 import Booking from './pages/Booking';
 import { AuthProvider } from './context/AuthContext';
 
+function AnimatedRoutes() {
+  const location = useLocation();
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<Home />} />
+        <Route path="/manifesto" element={<Manifesto />} />
+        <Route path="/studio" element={<Studio />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/mobile-apps" element={<MobileApps />} />
+        <Route path="/clients" element={<Clients />} />
+        <Route path="/news" element={<News />} />
+        <Route path="/qa" element={<QA />} />
+        <Route path="/legal" element={<Legal />} />
+        <Route path="/vision" element={<Vision />} />
+        <Route path="/subscription" element={<Subscription />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/booking" element={<Booking />} />
+        <Route path="/login" element={<CmsLogin />} />
+        <Route path="/admin" element={<AdminDashboard />} />
+      </Routes>
+    </AnimatePresence>
+  );
+}
+
 function App() {
   const { i18n } = useTranslation();
 
@@ -36,27 +62,11 @@ function App() {
   return (
     <Router>
       <AuthProvider>
-        <div className="flex flex-col min-h-screen bg-primary text-white">
+        <div className="flex flex-col min-h-screen bg-primary text-secondary selection:bg-gold selection:text-primary">
           <Navbar />
-          <div className="flex-grow">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/manifesto" element={<Manifesto />} />
-              <Route path="/studio" element={<Studio />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/mobile-apps" element={<MobileApps />} />
-              <Route path="/clients" element={<Clients />} />
-              <Route path="/news" element={<News />} />
-              <Route path="/qa" element={<QA />} />
-              <Route path="/legal" element={<Legal />} />
-              <Route path="/vision" element={<Vision />} />
-              <Route path="/subscription" element={<Subscription />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/booking" element={<Booking />} />
-              <Route path="/login" element={<CmsLogin />} />
-              <Route path="/admin" element={<AdminDashboard />} />
-            </Routes>
-          </div>
+          <main className="flex-grow pt-20">
+            <AnimatedRoutes />
+          </main>
           <Footer />
         </div>
       </AuthProvider>

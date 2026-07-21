@@ -8,8 +8,18 @@
   }
 
   body {
-    @apply bg-primary text-secondary antialiased;
+    @apply bg-primary text-secondary antialiased selection:bg-gold selection:text-primary;
     font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-primary/40 backdrop-blur-xl border border-white/5;
+  }
+
+  .text-glow {
+    text-shadow: 0 0 20px rgba(197, 160, 89, 0.3);
   }
 }
 

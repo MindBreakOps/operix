@@ -77,47 +77,64 @@ const Manifesto = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="bg-primary text-secondary min-h-screen overflow-x-hidden selection:bg-navy selection:text-white">
-      <BackgroundPulse />
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="bg-primary text-secondary min-h-screen overflow-x-hidden selection:bg-gold selection:text-primary"
+    >
+      <CoreBackground />
 
       {/* Cinematic Hero */}
-      <header className="h-[120vh] flex items-center px-6 relative">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 2 }}
-          className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(30,45,64,0.15)_0%,transparent_100%)] pointer-events-none"
-        />
+      <header className="h-screen flex items-center px-6 relative overflow-hidden">
+        <div className="absolute inset-0 grayscale opacity-20 scale-105">
+           <img
+            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop"
+            alt="Manifesto Hero"
+            className="w-full h-full object-cover"
+           />
+        </div>
 
-        <div className="z-10 w-full mt-24">
+        <div className="z-10 w-full mt-24 max-w-7xl mx-auto">
           <motion.h1
             initial={{ y: 200, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
-            className="text-[20vw] font-black tracking-tighter leading-[0.7] uppercase text-center md:text-left text-secondary"
+            transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+            className="text-[22vw] font-black tracking-tighter leading-[0.7] uppercase text-center md:text-left text-secondary drop-shadow-2xl"
           >
             {t('manifestoTitle')}
           </motion.h1>
 
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between mt-12 gap-8">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between mt-16 gap-12">
             <motion.div
               initial={{ width: 0 }}
-              animate={{ width: "30vw" }}
-              transition={{ delay: 0.8, duration: 1.5, ease: "circOut" }}
-              className="h-2 bg-navy"
+              animate={{ width: "40vw" }}
+              transition={{ delay: 1, duration: 2, ease: "circOut" }}
+              className="h-px bg-gold"
             />
 
             <motion.p
               initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 0.5, x: 0 }}
-              transition={{ delay: 1.2, duration: 1 }}
-              className="text-xl md:text-3xl font-bold uppercase tracking-[0.3em]"
+              animate={{ opacity: 0.6, x: 0 }}
+              transition={{ delay: 1.5, duration: 1 }}
+              className="text-2xl md:text-4xl font-black uppercase tracking-[0.4em] text-gold"
             >
               {t('manifestoSubtitle')}
             </motion.p>
           </div>
         </div>
       </header>
+
+      {/* Narrative Break */}
+      <section className="py-64 px-6 border-y border-gold/10 relative overflow-hidden">
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <div className="w-px h-24 bg-gold mx-auto mb-12" />
+          <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-tight mb-12">
+            "Software is the new industrial bedrock. Operix is the architect."
+          </h2>
+          <div className="w-12 h-px bg-gold mx-auto" />
+        </div>
+      </section>
 
       {/* Main Content Sections */}
       <main className="relative">
@@ -127,6 +144,16 @@ const Manifesto = () => {
           body={t('philBody')}
         />
 
+        {/* Transition Image Section */}
+        <div className="h-[60vh] w-full overflow-hidden relative grayscale opacity-40 hover:opacity-100 transition-opacity duration-1000">
+           <img
+            src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop"
+            alt="Technical Infrastructure"
+            className="w-full h-full object-cover"
+           />
+           <div className="absolute inset-0 bg-gradient-to-b from-primary via-transparent to-primary" />
+        </div>
+
         <ManifestoSection
           index={1}
           title={t('effTitle')}
@@ -134,17 +161,20 @@ const Manifesto = () => {
         />
 
         {/* Vision & Mission - Immersive Grid */}
-        <section className="min-h-screen py-48 px-6 flex flex-col justify-center space-y-64">
+        <section className="min-h-screen py-64 px-6 flex flex-col justify-center space-y-96 relative">
+            {/* Animated Grid Dots */}
+            <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#c5a059 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+
             <motion.div
               initial={{ opacity: 0, y: 100 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
-              className="relative"
+              className="relative max-w-7xl mx-auto"
             >
-              <h3 className="text-[12vw] font-black uppercase mb-8 leading-none opacity-10 absolute -top-12 -left-4 pointer-events-none text-navy">
+              <h3 className="text-[18vw] font-black uppercase mb-8 leading-none opacity-5 absolute -top-32 -left-12 pointer-events-none text-gold">
                 {t('visionTitle')}
               </h3>
-              <p className="text-4xl md:text-8xl font-black leading-tight max-w-7xl relative z-10">
+              <p className="text-5xl md:text-[10rem] font-black leading-[0.85] max-w-7xl relative z-10 tracking-tighter uppercase">
                 {t('visionBody')}
               </p>
             </motion.div>
@@ -153,12 +183,12 @@ const Manifesto = () => {
               initial={{ opacity: 0, y: 100 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
-              className="relative self-end text-right"
+              className="relative self-end text-right max-w-7xl mx-auto"
             >
-              <h3 className="text-[12vw] font-black uppercase mb-8 leading-none opacity-10 absolute -top-12 -right-4 pointer-events-none text-navy">
+              <h3 className="text-[18vw] font-black uppercase mb-8 leading-none opacity-5 absolute -top-32 -right-12 pointer-events-none text-gold">
                 {t('missionTitle')}
               </h3>
-              <p className="text-4xl md:text-8xl font-black leading-tight max-w-7xl relative z-10">
+              <p className="text-5xl md:text-[10rem] font-black leading-[0.85] max-w-7xl relative z-10 tracking-tighter uppercase">
                 {t('missionBody')}
               </p>
             </motion.div>
@@ -166,24 +196,27 @@ const Manifesto = () => {
       </main>
 
       {/* Outro */}
-      <footer className="h-screen flex flex-col items-center justify-center relative overflow-hidden">
+      <footer className="h-screen flex flex-col items-center justify-center relative overflow-hidden border-t border-gold/10">
          <motion.div
             initial={{ scale: 0, opacity: 0 }}
             whileInView={{ scale: 1, opacity: 1 }}
             transition={{ duration: 1.5, ease: "backOut" }}
-            className="w-32 h-32 border-8 border-navy rotate-45 flex items-center justify-center mb-12"
+            className="w-40 h-40 border-[1px] border-gold rotate-45 flex items-center justify-center mb-16 relative"
          >
-            <div className="w-8 h-8 bg-navy" />
+            <div className="absolute inset-2 border border-gold/20" />
+            <div className="w-10 h-10 bg-gold shadow-[0_0_30px_#c5a059]" />
          </motion.div>
          <motion.p
             initial={{ opacity: 0 }}
-            whileInView={{ opacity: 0.3 }}
-            className="text-sm tracking-[1em] uppercase font-bold text-navy"
+            whileInView={{ opacity: 0.4 }}
+            className="text-xs tracking-[1.5em] uppercase font-black text-gold"
          >
             {t('footer.copyright')}
          </motion.p>
+
+         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gold/5 blur-[150px] rounded-full -z-10" />
       </footer>
-    </div>
+    </motion.div>
   );
 };
 

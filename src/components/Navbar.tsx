@@ -123,7 +123,15 @@ const Navbar = () => {
           </div>
 
           <div className="flex items-center gap-6">
-            <div className="hidden lg:flex items-center gap-6">
+            <div className="hidden lg:flex items-center gap-8">
+              <div className="flex flex-col items-end">
+                <div className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse shadow-[0_0_10px_#c5a059]" />
+                  <span className="text-[9px] font-black text-gold uppercase tracking-[0.2em]">System: Active</span>
+                </div>
+                <span className="text-[7px] font-mono text-secondary/40 uppercase tracking-widest mt-1">v2.0.4 // KSA_RYD</span>
+              </div>
+              <div className="w-px h-8 bg-gold/10" />
               <Link
                 to="/login"
                 className="text-[0.65rem] font-black text-secondary hover:text-gold transition-colors uppercase tracking-[0.2em]"
@@ -132,7 +140,7 @@ const Navbar = () => {
               </Link>
               <button
                 onClick={toggleLanguage}
-                className="flex items-center gap-2 text-[0.65rem] font-black text-gold border border-gold/30 px-4 py-2 hover:bg-gold hover:text-navy transition-all tracking-[0.2em] uppercase"
+                className="flex items-center gap-2 text-[0.65rem] font-black text-gold border border-gold/30 px-5 py-2.5 hover:bg-gold hover:text-[#05070a] transition-all tracking-[0.2em] uppercase backdrop-blur-sm"
               >
                 <Globe size={12} />
                 {i18n.language === 'en' ? 'AR' : 'EN'}
