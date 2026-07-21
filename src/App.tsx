@@ -20,7 +20,7 @@ import AdminDashboard from './pages/AdminDashboard';
 import Contact from './pages/Contact';
 import Booking from './pages/Booking';
 import { AuthProvider } from './context/AuthContext';
-import React, { Component, ErrorInfo, ReactNode } from 'react';
+import { Component, type ErrorInfo, type ReactNode } from 'react';
 
 class ErrorBoundary extends Component<{ children: ReactNode }, { hasError: boolean }> {
   constructor(props: { children: ReactNode }) {

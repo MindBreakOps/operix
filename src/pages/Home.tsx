@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
@@ -40,8 +40,8 @@ const MatrixText = ({ text }: { text: string }) => {
     if (!text) return;
     let iteration = 0;
     const interval = setInterval(() => {
-      setDisplayText(prev =>
-        text.split("").map((char, index) => {
+      setDisplayText(() =>
+        text.split("").map((_, index) => {
           if (index < iteration) return text[index];
           return characters[Math.floor(Math.random() * characters.length)];
         }).join("")

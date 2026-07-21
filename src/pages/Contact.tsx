@@ -20,8 +20,8 @@ const servicesList = [
 ];
 
 const Contact = () => {
-  const { t, i18n } = useTranslation();
-  const isAr = i18n.language === 'ar';
+  const { t } = useTranslation();
+  // const { i18n } = useTranslation();
 
   // Form State
   const [formData, setFormData] = useState({

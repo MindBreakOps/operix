@@ -1,10 +1,11 @@
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import CoreBackground from '../components/CoreBackground';
 
 
+/*
 const TechnicalNode = ({ className, label, coordinates }: { className?: string, label?: string, coordinates?: string }) => (
   <div className={`absolute flex flex-col font-mono text-[10px] tracking-widest opacity-30 ${className}`}>
     {label && <span className="text-gold">[ {label} ]</span>}
@@ -12,14 +13,14 @@ const TechnicalNode = ({ className, label, coordinates }: { className?: string, 
     <div className="w-12 h-px bg-gold mt-2 opacity-30" />
   </div>
 );
+*/
 
-const ProductSection = ({ id, name, pillar, description, modules, index, image, useCase, tactical }: {
+const ProductSection = ({ id, name, pillar, description, modules, image, useCase, tactical }: {
   id: string;
   name: string;
   pillar: string;
   description: string;
   modules: string[];
-  index: number;
   image: string;
   useCase: string;
   tactical: string;
@@ -196,12 +197,6 @@ const SystemArchitecture = () => {
 const Studio = () => {
   const { t } = useTranslation();
   const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
-  });
-
-  const tickerX = useTransform(scrollYProgress, [0, 1], [0, -2000]);
 
   const products = [
     {

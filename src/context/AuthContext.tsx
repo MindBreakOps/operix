@@ -77,7 +77,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       }
 
       try {
-        const { data: adminData, error: adminError } = await supabase
+        const { error: adminError } = await supabase
           .from('operix_website_admins')
           .select('*')
           .eq('email', currentSession.user.email)

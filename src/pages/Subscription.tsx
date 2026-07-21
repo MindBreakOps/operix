@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import { Send, CheckCircle, Shield, X, Zap } from 'lucide-react';
+import { Send, CheckCircle, Shield, X, Zap, ChevronDown } from 'lucide-react';
 
 const OPS_API = 'https://script.google.com/macros/s/AKfycby7xDEoYBzGM7sAAAkX0LDTKNHo63LjbgmaC-0VLXESPFj7BSl10GE-sIqM-Ss3wE8/exec';
 const TARGET_EMAIL = 'subscription@operix-solutions.com';

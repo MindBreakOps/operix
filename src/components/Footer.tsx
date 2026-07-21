@@ -5,7 +5,7 @@ import Logo from './Logo';
 import DemoCTA from './DemoCTA';
 import {
   Users, Settings, Stethoscope, FileCheck, MapPin,
-  Globe, Shield, ChevronRight, BookOpen, Heart,
+  BookOpen, Heart,
   MessageCircle
 } from 'lucide-react';
 import { FBIcon, IGIcon, YTIcon, XIcon } from './SocialIcons';
