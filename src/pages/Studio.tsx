@@ -324,8 +324,8 @@ const Studio = () => {
 
       {/* Main Product Grid */}
       <div className="space-y-0">
-          {products.map((product, idx) => (
-            <ProductSection key={product.id} {...product} index={idx} />
+          {products.map((product) => (
+            <ProductSection key={product.id} {...product} />
           ))}
       </div>
 
