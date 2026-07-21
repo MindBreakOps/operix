@@ -1,0 +1,6 @@
+- [x] Theme Flip: Update `tailwind.config.js` and `index.css` for Light Mode (White bg, Black text)
+- [x] Rename "Mobile Apps" to "Mobile Nodes" in `en.json` and `ar.json`
+- [x] Reorganize `Navbar.tsx`: Group Services, News, and Clients into a "Network" dropdown
+- [x] Overhaul `Footer.tsx`: Reorder columns (Intro first), Update socials, Remove ZATCA badge
+- [x] Adjust `Home.tsx` and `Studio.tsx`: Update Telemetry and Ecosystem visuals for Light Mode
+- [x] Final Verification: Build check and visual audit across all pages

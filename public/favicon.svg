@@ -1,0 +1,26 @@
+<svg
+  viewBox="0 0 100 120"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M50 0L100 30V45L50 15L0 45V30L50 0Z"
+    fill="#FFD700"
+  />
+  <path
+    d="M50 45L65 60L50 75L35 60L50 45Z"
+    fill="#FFD700"
+  />
+  <path
+    d="M0 50V75H12V50H0Z"
+    fill="#FFD700"
+  />
+  <path
+    d="M88 50V75H100V50H88Z"
+    fill="#FFD700"
+  />
+  <path
+    d="M50 120L0 90V75L50 105L100 75V90L50 120Z"
+    fill="#FFD700"
+  />
+</svg>

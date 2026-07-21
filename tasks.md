@@ -1,0 +1,38 @@
+# Project Migration Tasks
+
+- [x] Create the folder structure in `/Users/asim/Desktop/opx-site/src`:
+  - `components/`
+  - `pages/`
+  - `config/`
+  - `assets/`
+  - `i18n/`
+- [x] Copy the translation files (`en.json`, `ar.json`) from `/Users/asim/Desktop/operix-website/src/i18n/` to `/Users/asim/Desktop/opx-site/src/i18n/locales/`.
+- [x] Create `/Users/asim/Desktop/opx-site/src/i18n/index.ts` with the i18next configuration.
+- [x] Copy the Supabase config from `/Users/asim/Desktop/operix-website/src/config/supabase.js` to `/Users/asim/Desktop/opx-site/src/config/supabase.ts` (converted to TS).
+- [x] Update `/Users/asim/Desktop/opx-site/src/components/Logo.tsx`: Precise monochromatic hexagonal chevron SVG recreation.
+- [x] Update `/Users/asim/Desktop/opx-site/src/components/Navbar.tsx`: Sticky navbar with "OPERIX Solutions" branding and full navigation (Home, Studio, Services, Mobile Apps, Manifesto, Clients, News, QA).
+- [x] Update `/Users/asim/Desktop/opx-site/src/components/Footer.tsx`: Product marquee and "OPERIX Solutions" branding with full navigation.
+- [x] Update `/Users/asim/Desktop/opx-site/src/App.tsx` with basic routing and layout, including placeholders for new pages.
+- [x] Implement `/Users/asim/Desktop/opx-site/src/pages/Home.tsx` with Hero, Ticker, Product Matrix, and Product Node concept.
+- [x] Implement `/Users/asim/Desktop/opx-site/src/pages/Manifesto.tsx` with bold typography, storytelling layout, smooth animations, and Vision & Mission section.
+- [x] Implement `/Users/asim/Desktop/opx-site/src/pages/Studio.tsx` with immersive grid of products, core pillars, and hover reveals.
+- [x] Finalize branding and navigation consistency across all components.
+- [x] Migrate Legal page with new brutalist design.
+- [x] Migrate Vision page with core philosophies and operational nodes.
+- [x] Migrate Subscription page with module configurator and ZATCA ledger.
+- [x] Migrate CmsLogin and AdminDashboard with new design and Auth integration.
+- [x] Integrate full i18n content from old website to new site locales.
+- [x] Update App.tsx with all remaining routes and AuthProvider.
+- [x] Initialize i18n in main.tsx.
+- [x] Update Logo.tsx to use `currentColor` for better theme support.
+- [x] Cache-bust favicon in index.html.
+- [x] Add mobile navigation menu to Navbar.tsx with Framer Motion slide-out drawer and monochromatic minimalist design.
+- [x] Enhanced Footer.tsx with official branding, Lucide icons, real contact info, and office locations with monochromatic/navy styling.
+- [x] Redesign Studio page with immersive multi-section layout, detailed module lists, and enhanced technical node aesthetic.
+- [x] Apply 'Cinematic Refresh' to Services, MobileApps, Clients, News, and QA pages:
+  - [x] Implement `BackgroundPulse` in Navy Blue.
+  - [x] Add staggered entrance animations.
+  - [x] Integrate Navy Blue Accents (#1e2d40).
+  - [x] Implement Flashlight cursor highlight on cards.
+  - [x] Ensure consistent large bold typography.
+- [ ] 100% Translation Audit: Search for hardcoded strings and ensure all UI text is moved to i18n locales.
