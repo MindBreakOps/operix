@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 import CoreBackground from '../components/CoreBackground';
 
 const Ticker = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isAr = i18n.language === 'ar';
   const items = [
     t('homeTicker1', 'Real-time Logistics'),
     t('homeTicker2', 'Enterprise Grade'),
@@ -21,7 +22,7 @@ const Ticker = () => {
         className="flex gap-20 whitespace-nowrap"
       >
         {[...items, ...items, ...items].map((item, i) => (
-          <span key={i} className="text-gold font-black uppercase tracking-[0.5em] text-[10px] flex items-center gap-4">
+          <span key={i} className={`text-gold font-black uppercase flex items-center gap-4 ${isAr ? 'tracking-normal text-xs' : 'tracking-[0.5em] text-[10px]'}`}>
             <div className="w-1 h-1 bg-gold rounded-full" />
             {item}
           </span>
@@ -33,11 +34,16 @@ const Ticker = () => {
 
 
 const MatrixText = ({ text }: { text: string }) => {
+  const { i18n } = useTranslation();
+  const isAr = i18n.language === 'ar';
   const [displayText, setDisplayText] = useState(text || "");
   const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$#@&";
 
   useEffect(() => {
-    if (!text) return;
+    if (!text || isAr) {
+      setDisplayText(text);
+      return;
+    }
     let iteration = 0;
     const interval = setInterval(() => {
       setDisplayText(() =>
@@ -50,7 +56,19 @@ const MatrixText = ({ text }: { text: string }) => {
       iteration += 1 / 3;
     }, 30);
     return () => clearInterval(interval);
-  }, [text]);
+  }, [text, isAr]);
+
+  if (isAr) {
+    return (
+      <motion.span
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
+        {text}
+      </motion.span>
+    );
+  }
 
   return <span>{displayText}</span>;
 };
@@ -68,7 +86,7 @@ const NarrativeSection = ({ title, body, image, reverse = false }: { title: stri
           >
             <div className="flex items-center gap-6 mb-12">
               <div className="w-20 h-px bg-gold" />
-              <span className="text-gold font-black tracking-[0.6em] uppercase text-[12px]">Perspective</span>
+              <span className="text-gold font-black tracking-[0.6em] uppercase text-[12px]">{t('perspective')}</span>
             </div>
             <h2 className="text-7xl md:text-[10rem] font-black uppercase tracking-tighter leading-[0.8] text-secondary mb-16">
               <MatrixText text={title} />
@@ -145,7 +163,7 @@ const VisitorCounters = () => {
               <span className="text-gold font-mono text-[10px] tracking-[0.6em] uppercase">{t('visitorTelemetryTitle')}</span>
             </div>
             <h2 className="text-6xl md:text-9xl font-black uppercase tracking-tighter leading-[0.8] text-secondary">
-              SYSTEM<br />LOAD.
+              {t('systemLoad')}
             </h2>
           </div>
           <div className="text-right font-mono text-[12px] text-gold/40 tracking-[0.3em] leading-relaxed uppercase bg-gold/5 p-8 border-l-2 border-gold backdrop-blur-md">
@@ -175,7 +193,7 @@ const VisitorCounters = () => {
                 <span className="text-7xl font-black tracking-tighter text-secondary group-hover:text-glow transition-all duration-700">
                   {counts[item.key].toLocaleString()}
                 </span>
-                <span className="text-[12px] font-mono text-gold/50 uppercase tracking-[0.4em] mb-4">REQ_SEC</span>
+                <span className="text-[12px] font-mono text-gold/50 uppercase tracking-[0.4em] mb-4">{t('reqSec')}</span>
               </div>
               <div className="mt-12 h-[2px] w-full bg-secondary/5 overflow-hidden">
                 <motion.div
@@ -306,7 +324,7 @@ const OperationalLayers = () => {
        </div>
        {/* Decorative Side Text */}
        <div className="absolute top-1/2 -right-32 -translate-y-1/2 rotate-90 opacity-5 pointer-events-none">
-          <span className="text-[15rem] font-black text-gold uppercase tracking-tighter">LAYERS</span>
+          <span className="text-[15rem] font-black text-gold uppercase tracking-tighter">{t('homeLayersTitle')}</span>
        </div>
     </section>
   );

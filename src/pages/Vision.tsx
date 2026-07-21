@@ -41,7 +41,7 @@ const Node = ({ city, desc, id, link, image }: { city: string; desc: string; id:
 
       <div className="mt-8 flex items-center gap-3 opacity-0 group-hover:opacity-40 transition-opacity duration-700">
          <Globe size={12} className="text-gold" />
-         <span className="text-[9px] font-mono text-gold uppercase tracking-[0.4em]">Establish Connection // {link.replace('https://', '')}</span>
+         <span className="text-[9px] font-mono text-gold uppercase tracking-[0.4em]">{t('establishConnection')} // {link.replace('https://', '')}</span>
       </div>
     </div>
   </motion.a>
@@ -134,10 +134,10 @@ const Vision = () => {
               <div className="flex-1 space-y-16">
                  <div className="flex items-center gap-8">
                     <div className="w-20 h-px bg-gold" />
-                    <span className="text-gold font-black tracking-[0.6em] uppercase text-[12px]">Strategic Asset</span>
+                    <span className="text-gold font-black tracking-[0.6em] uppercase text-[12px]">{t('strategicAsset')}</span>
                  </div>
                  <h2 className="text-7xl md:text-[11rem] font-black uppercase tracking-tighter leading-[0.8] text-secondary">
-                    Structural<br />Sovereignty.
+                    {t('structuralSovereignty')}
                  </h2>
                  <p className="text-3xl text-secondary/40 leading-[0.9] font-black tracking-tighter uppercase">
                     We believe that true economic independence is built on the foundation of digital ownership. Operix provides the localized infrastructure that allows enterprises to maintain absolute control over their operational logic, data residency, and future evolution. This is our commitment to the region's long-term digital heritage.

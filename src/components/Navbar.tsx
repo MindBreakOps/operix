@@ -135,14 +135,6 @@ const Navbar = () => {
 
           <div className="flex items-center gap-6">
             <div className="hidden lg:flex items-center gap-8">
-              <div className="flex flex-col items-end">
-                <div className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse shadow-[0_0_10px_#c5a059]" />
-                  <span className="text-[9px] font-black text-gold uppercase tracking-[0.2em]">System: Active</span>
-                </div>
-                <span className="text-[7px] font-mono text-secondary/40 uppercase tracking-widest mt-1">v2.0.4 // KSA_RYD</span>
-              </div>
-              <div className="w-px h-8 bg-gold/10" />
               <Link
                 to="/login"
                 className="text-[0.65rem] font-black text-secondary hover:text-gold transition-colors uppercase tracking-[0.2em]"

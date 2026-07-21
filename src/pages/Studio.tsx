@@ -286,7 +286,7 @@ const Studio = () => {
             </h1>
           </div>
           <h2 className="text-8xl md:text-[14rem] font-black uppercase tracking-tighter leading-[0.75] max-w-6xl mb-32">
-            THE<br />ENGINEERING.
+            {t('studioEngineeringTitle')}
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-24 max-w-6xl">
@@ -339,7 +339,7 @@ const Studio = () => {
            viewport={{ once: true }}
            transition={{ duration: 1 }}
          >
-            <h4 className="text-gold font-black tracking-[1em] uppercase mb-12 text-sm">Deployment Ready</h4>
+            <h4 className="text-gold font-black tracking-[1em] uppercase mb-12 text-sm">{t('deploymentReady')}</h4>
             <h2 className="text-7xl md:text-[12rem] font-black uppercase tracking-tighter mb-24 leading-[0.8]">
                {t('studioTransformation')}
             </h2>

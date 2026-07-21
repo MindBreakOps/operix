@@ -10,9 +10,11 @@ interface WordProps {
 }
 
 const Word = ({ word, progress, range }: WordProps) => {
+  const { i18n } = useTranslation();
+  const isAr = i18n.language === 'ar';
   const opacity = useTransform(progress, range, [0.15, 1]);
   return (
-    <motion.span style={{ opacity }} className="mr-4 mb-4 text-secondary">
+    <motion.span style={{ opacity }} className={`mr-4 mb-4 text-secondary ${isAr ? 'tracking-normal' : ''}`}>
       {word}
     </motion.span>
   );

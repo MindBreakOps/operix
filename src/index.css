@@ -10,7 +10,25 @@
 
   body {
     @apply bg-primary text-secondary antialiased selection:bg-gold selection:text-primary;
+  }
+
+  body.font-sans {
     font-family: 'Inter', sans-serif;
+  }
+
+  body.font-arabic {
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    letter-spacing: 0 !important;
+    word-spacing: normal !important;
+  }
+}
+
+@layer base {
+  [dir="rtl"],
+  .font-arabic,
+  .font-arabic * {
+    letter-spacing: 0 !important;
+    tracking: 0 !important;
   }
 }
 

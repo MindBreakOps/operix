@@ -97,7 +97,13 @@ function App() {
     document.documentElement.lang = i18n.language;
 
     // Optional: add a class to body for CSS targeting
-    document.body.className = i18n.language === 'ar' ? 'font-arabic' : 'font-sans';
+    if (i18n.language === 'ar') {
+      document.body.classList.add('font-arabic');
+      document.body.classList.remove('font-sans');
+    } else {
+      document.body.classList.add('font-sans');
+      document.body.classList.remove('font-arabic');
+    }
   }, [i18n.language]);
 
   return (
