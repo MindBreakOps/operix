@@ -20,29 +20,70 @@ import AdminDashboard from './pages/AdminDashboard';
 import Contact from './pages/Contact';
 import Booking from './pages/Booking';
 import { AuthProvider } from './context/AuthContext';
+import React, { Component, ErrorInfo, ReactNode } from 'react';
+
+class ErrorBoundary extends Component<{ children: ReactNode }, { hasError: boolean }> {
+  constructor(props: { children: ReactNode }) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+    console.error("KERNEL_PANIC:", error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="min-h-screen bg-[#05070a] flex flex-col items-center justify-center p-8 text-center">
+          <div className="w-16 h-16 border border-red-500/50 rotate-45 flex items-center justify-center mb-12 animate-pulse">
+             <div className="w-2 h-2 bg-red-500" />
+          </div>
+          <h1 className="text-2xl font-black text-red-500 uppercase tracking-[0.5em] mb-4">Kernel Panic</h1>
+          <p className="text-secondary/40 font-mono text-xs uppercase tracking-widest max-w-md leading-relaxed">
+            A critical system exception has occurred. The operational core has been halted to prevent data corruption.
+          </p>
+          <button
+            onClick={() => window.location.reload()}
+            className="mt-12 px-8 py-4 border border-gold/20 text-gold font-black uppercase text-[10px] tracking-[0.4em] hover:bg-gold hover:text-primary transition-all"
+          >
+            Re-Initialize System
+          </button>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
 
 function AnimatedRoutes() {
   const location = useLocation();
   return (
-    <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<Home />} />
-        <Route path="/manifesto" element={<Manifesto />} />
-        <Route path="/studio" element={<Studio />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/mobile-apps" element={<MobileApps />} />
-        <Route path="/clients" element={<Clients />} />
-        <Route path="/news" element={<News />} />
-        <Route path="/qa" element={<QA />} />
-        <Route path="/legal" element={<Legal />} />
-        <Route path="/vision" element={<Vision />} />
-        <Route path="/subscription" element={<Subscription />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/booking" element={<Booking />} />
-        <Route path="/login" element={<CmsLogin />} />
-        <Route path="/admin" element={<AdminDashboard />} />
-      </Routes>
-    </AnimatePresence>
+    <ErrorBoundary>
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<Home />} />
+          <Route path="/manifesto" element={<Manifesto />} />
+          <Route path="/studio" element={<Studio />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/mobile-apps" element={<MobileApps />} />
+          <Route path="/clients" element={<Clients />} />
+          <Route path="/news" element={<News />} />
+          <Route path="/qa" element={<QA />} />
+          <Route path="/legal" element={<Legal />} />
+          <Route path="/vision" element={<Vision />} />
+          <Route path="/subscription" element={<Subscription />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/booking" element={<Booking />} />
+          <Route path="/login" element={<CmsLogin />} />
+          <Route path="/admin" element={<AdminDashboard />} />
+        </Routes>
+      </AnimatePresence>
+    </ErrorBoundary>
   );
 }
 

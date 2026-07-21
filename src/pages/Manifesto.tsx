@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
 import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import BackgroundPulse from '../components/BackgroundPulse';
+import CoreBackground from '../components/CoreBackground';
 
 interface WordProps {
   word: string;
@@ -89,7 +89,7 @@ const Manifesto = () => {
       <header className="h-screen flex items-center px-6 relative overflow-hidden">
         <div className="absolute inset-0 grayscale opacity-20 scale-105">
            <img
-            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop"
+            src="/assets/images/hero-industrial.jpg"
             alt="Manifesto Hero"
             className="w-full h-full object-cover"
            />
@@ -147,7 +147,7 @@ const Manifesto = () => {
         {/* Transition Image Section */}
         <div className="h-[60vh] w-full overflow-hidden relative grayscale opacity-40 hover:opacity-100 transition-opacity duration-1000">
            <img
-            src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop"
+            src="/assets/images/tech-infra.jpg"
             alt="Technical Infrastructure"
             className="w-full h-full object-cover"
            />

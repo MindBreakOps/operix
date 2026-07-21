@@ -3,38 +3,34 @@ import React from 'react';
 const Logo: React.FC<{ className?: string }> = ({ className = "h-8" }) => {
   return (
     <svg
-      viewBox="0 0 100 120"
+      viewBox="0 0 100 115"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       width="100%"
       height="100%"
       className={className}
     >
-      {/* Top Hexagonal Chevron */}
+      {/* Top Hexagonal Frame Segment 1 */}
       <path
-        d="M50 0L100 30V45L50 15L0 45V30L50 0Z"
+        d="M50 0L100 28.87V57.74L50 28.87L0 57.74V28.87L50 0Z"
         fill="currentColor"
       />
-      {/* Central Command Diamond */}
+
+      {/* Middle Chevron Segment 2 */}
       <path
-        d="M50 45L65 60L50 75L35 60L50 45Z"
+        d="M50 35L100 63.87V78.3L50 49.43L0 78.3V63.87L50 35Z"
         fill="currentColor"
+        fillOpacity="0.8"
       />
-      {/* Left Interface Node */}
+
+      {/* Bottom Structural Chevron (Gold) */}
       <path
-        d="M0 50V75H12V50H0Z"
-        fill="currentColor"
+        d="M50 65L100 93.87V115L50 86.13L0 115V93.87L50 65Z"
+        fill="#c5a059"
       />
-      {/* Right Interface Node */}
-      <path
-        d="M88 50V75H100V50H88Z"
-        fill="currentColor"
-      />
-      {/* Bottom Structural Chevron */}
-      <path
-        d="M50 120L0 90V75L50 105L100 75V90L50 120Z"
-        fill="currentColor"
-      />
+
+      {/* Technical Detail: Center Alignment Dot */}
+      <circle cx="50" cy="57.74" r="2" fill="#c5a059" opacity="0.5" />
     </svg>
   );
 };

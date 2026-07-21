@@ -1,21 +1,21 @@
-# Task List: Operix "Phenomenon" Update
+# Task List: Operix "Phenomenon" Phase 3
 
-## Phase 1: Foundation & Theme
-- [x] Update `tailwind.config.js` with the new Dark Palette.
-- [x] Refine global CSS in `index.css` for the dark theme.
-- [x] Implement `AppScaffold` or update `App.tsx` for route transitions (`AnimatePresence`).
+## Phase 1: Emergency & Theme Stability
+- [x] Fix trailing commas in `en.json` and `ar.json`.
+- [x] Add inline `<style>` to `index.html` for forced black background.
+- [x] Verify `npm run build` locally (Syntax fixed).
 
-## Phase 2: Content Enrichment (Copywriting)
-- [x] Expand `en.json` with visionary paragraphs for Home, Studio, and Vision.
-- [x] Add "Narrative" components to `Home.tsx`.
-- [x] Update `Studio.tsx` with module deep-dives.
+## Phase 2: Ultimate Content Density
+- [x] Add "Operational Layers" section to `Home.tsx`.
+- [x] Add "Tactical Edge" paragraphs to all modules in `Studio.tsx`.
+- [x] Implement "2030 Roadmap" in `Vision.tsx`.
 
-## Phase 3: Visual & Interactive
-- [x] Integrate cinematic transition images (Unsplash) into `Home.tsx` and `Studio.tsx`.
-- [x] Build the "Core Telemetry" background grid.
-- [x] Enhance the `GlobalTelemetry` map in `Home.tsx`.
+## Phase 3: Advanced Interactions
+- [x] Implement technical "mask-reveal" for images.
+- [x] Add "glitch/matrix" text reveal for primary headers.
+- [x] Enhance "Visitor Counters" with more regional metadata.
 
-## Phase 4: Refinement & Verification
-- [x] Update `Navbar.tsx` and `Footer.tsx` for the new theme.
-- [x] Verify RTL support for expanded text.
-- [x] Final visual audit and performance check.
+## Phase 4: Final Verification
+- [x] JSON lint check.
+- [x] Build success verification.
+- [x] Responsive & RTL audit.

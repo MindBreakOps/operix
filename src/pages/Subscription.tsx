@@ -224,118 +224,162 @@ const Subscription = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-secondary/90 backdrop-blur-2xl"
+            className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-[#05070a]/90 backdrop-blur-2xl"
           >
             <motion.div
-              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              initial={{ scale: 0.95, opacity: 0, y: 30 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.9, opacity: 0, y: 20 }}
-              className="bg-secondary border border-primary w-full max-w-xl p-12 shadow-2xl relative"
+              exit={{ scale: 0.95, opacity: 0, y: 30 }}
+              className="bg-[#0a0f16] border border-gold/10 w-full max-w-2xl p-12 shadow-[0_0_100px_rgba(0,0,0,0.8)] relative overflow-hidden"
             >
+              {/* Technical HUD Elements */}
+              <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-gold" />
+              <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-gold" />
+              <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-gold" />
+              <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-gold" />
+
+              <div className="absolute top-8 left-12 font-mono text-[8px] text-gold/30 tracking-[0.5em] uppercase pointer-events-none">
+                GATEWAY_INIT // SECURE_UPLINK
+              </div>
+
+              {/* Scanning Line */}
+              <motion.div
+                animate={{ top: ['-10%', '110%'] }}
+                transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+                className="absolute left-0 right-0 h-px bg-gold/10 z-20 pointer-events-none"
+              />
+
               <button
                 onClick={() => setShowModal(false)}
-                className="absolute top-8 right-8 text-secondary/40 hover:text-secondary transition-colors"
+                className="absolute top-8 right-12 text-secondary/20 hover:text-gold transition-all duration-500 z-30"
               >
                 <X size={24} />
               </button>
 
               {submitted ? (
-                <div className="py-20 text-center space-y-6">
-                  <div className="w-20 h-20 bg-primary text-secondary rounded-full flex items-center justify-center mx-auto mb-8">
-                    <CheckCircle size={40} />
+                <div className="py-20 text-center space-y-8">
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ type: "spring", damping: 12 }}
+                    className="w-24 h-24 bg-gold/10 border border-gold text-gold rounded-full flex items-center justify-center mx-auto mb-12 shadow-[0_0_50px_rgba(197,160,89,0.3)]"
+                  >
+                    <CheckCircle size={48} />
+                  </motion.div>
+                  <h3 className="text-5xl font-black uppercase tracking-tighter text-secondary leading-none">{t('subSuccess')}</h3>
+                  <p className="text-xl text-gold/60 uppercase tracking-widest font-black leading-relaxed">{t('subSuccessSub')}</p>
+                  <div className="pt-12">
+                     <span className="text-[10px] font-mono text-secondary/20 uppercase tracking-[0.5em]">OPERIX_CORE // V2.0.4 // UPLINK_SUCCESS</span>
                   </div>
-                  <h3 className="text-4xl font-black uppercase tracking-tighter">Request Sent</h3>
-                  <p className="text-lg opacity-60 uppercase font-medium">Our architects will contact you shortly.</p>
                 </div>
               ) : (
                 <>
-                  <div className="mb-12">
-                    <div className="flex items-center gap-3 mb-4">
-                       <Zap size={20} className="text-secondary" />
-                       <span className="text-xs font-black uppercase tracking-[0.3em] opacity-40">System Configuration</span>
+                  <div className="mb-16 relative z-10">
+                    <div className="flex items-center gap-4 mb-6">
+                       <Zap size={24} className="text-gold" />
+                       <span className="text-gold font-black tracking-[0.4em] uppercase text-[10px]">{t('subSummary')}</span>
                     </div>
-                    <h2 className="text-4xl font-black uppercase tracking-tighter">Enterprise Details</h2>
+                    <h2 className="text-6xl md:text-7xl font-black uppercase tracking-tighter leading-none text-secondary">
+                      Initialize<br />Configuration.
+                    </h2>
                   </div>
 
-                  <form onSubmit={handleCheckoutSubmit} className="space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div className="space-y-2">
-                        <label className="text-[10px] font-black uppercase tracking-widest opacity-40 ml-2">Full Name</label>
+                  {/* Deployment Summary Mini-Card */}
+                  <div className="mb-12 p-6 bg-secondary/5 border border-gold/5 flex flex-wrap gap-3">
+                     <span className="text-[9px] font-black text-gold/40 uppercase tracking-widest w-full mb-2">{t('subSummaryModules')}:</span>
+                     {activeModules.map(mod => (
+                       <span key={mod} className="px-3 py-1 bg-gold/10 border border-gold/20 text-gold text-[10px] font-black tracking-widest uppercase">
+                         {mod}
+                       </span>
+                     ))}
+                  </div>
+
+                  <form onSubmit={handleCheckoutSubmit} className="space-y-8 relative z-10">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                      <div className="space-y-3">
+                        <label className="text-[10px] font-black uppercase tracking-[0.3em] text-gold ml-1">{t('subFullName')}</label>
                         <input
                           required
                           type="text"
+                          placeholder="FULL NAME"
                           value={formData.name}
                           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                          className="w-full bg-secondary/5 border border-secondary/10 px-6 py-4 text-secondary focus:outline-none focus:border-secondary transition-colors font-bold uppercase text-sm"
+                          className="w-full bg-secondary/5 border border-gold/10 px-8 py-5 text-secondary focus:outline-none focus:border-gold transition-all duration-500 font-bold uppercase text-xs tracking-widest placeholder:text-secondary/10"
                         />
                       </div>
-                      <div className="space-y-2">
-                        <label className="text-[10px] font-black uppercase tracking-widest opacity-40 ml-2">Corporate Email</label>
+                      <div className="space-y-3">
+                        <label className="text-[10px] font-black uppercase tracking-[0.3em] text-gold ml-1">{t('subEmail')}</label>
                         <input
                           required
                           type="email"
+                          placeholder="CORPORATE_MAIL@DOMAIN.COM"
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          className="w-full bg-secondary/5 border border-secondary/10 px-6 py-4 text-secondary focus:outline-none focus:border-secondary transition-colors font-bold uppercase text-sm"
+                          className="w-full bg-secondary/5 border border-gold/10 px-8 py-5 text-secondary focus:outline-none focus:border-gold transition-all duration-500 font-bold uppercase text-xs tracking-widest placeholder:text-secondary/10"
                         />
                       </div>
                     </div>
 
-                    <div className="space-y-2">
-                      <label className="text-[10px] font-black uppercase tracking-widest opacity-40 ml-2">Registered Entity</label>
+                    <div className="space-y-3">
+                      <label className="text-[10px] font-black uppercase tracking-[0.3em] text-gold ml-1">{t('subEntity')}</label>
                       <input
                         required
                         type="text"
+                        placeholder="COMPANY LEGAL NAME"
                         value={formData.company}
                         onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                        className="w-full bg-secondary/5 border border-secondary/10 px-6 py-4 text-secondary focus:outline-none focus:border-secondary transition-colors font-bold uppercase text-sm"
+                        className="w-full bg-secondary/5 border border-gold/10 px-8 py-5 text-secondary focus:outline-none focus:border-gold transition-all duration-500 font-bold uppercase text-xs tracking-widest placeholder:text-secondary/10"
                       />
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div className="space-y-2">
-                        <label className="text-[10px] font-black uppercase tracking-widest opacity-40 ml-2">Phone Number</label>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                      <div className="space-y-3">
+                        <label className="text-[10px] font-black uppercase tracking-[0.3em] text-gold ml-1">{t('subPhone')}</label>
                         <input
                           required
                           type="tel"
+                          placeholder="+966 --- --- ---"
                           value={formData.phone}
                           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                          className="w-full bg-secondary/5 border border-secondary/10 px-6 py-4 text-secondary focus:outline-none focus:border-secondary transition-colors font-bold uppercase text-sm"
+                          className="w-full bg-secondary/5 border border-gold/10 px-8 py-5 text-secondary focus:outline-none focus:border-gold transition-all duration-500 font-bold uppercase text-xs tracking-widest placeholder:text-secondary/10"
                         />
                       </div>
-                      <div className="space-y-2">
-                        <label className="text-[10px] font-black uppercase tracking-widest opacity-40 ml-2">Enterprise Size</label>
-                        <select
-                          value={formData.employees}
-                          onChange={(e) => setFormData({ ...formData, employees: e.target.value })}
-                          className="w-full bg-secondary/5 border border-secondary/10 px-6 py-4 text-secondary focus:outline-none focus:border-secondary transition-colors font-bold uppercase text-sm appearance-none cursor-pointer"
-                        >
-                          <option value="1-50" className="bg-secondary">1-50 Employees</option>
-                          <option value="51-200" className="bg-secondary">51-200 Employees</option>
-                          <option value="201-500" className="bg-secondary">201-500 Employees</option>
-                          <option value="500+" className="bg-secondary">500+ Employees</option>
-                        </select>
+                      <div className="space-y-3">
+                        <label className="text-[10px] font-black uppercase tracking-[0.3em] text-gold ml-1">{t('subSize')}</label>
+                        <div className="relative">
+                          <select
+                            value={formData.employees}
+                            onChange={(e) => setFormData({ ...formData, employees: e.target.value })}
+                            className="w-full bg-secondary/5 border border-gold/10 px-8 py-5 text-secondary focus:outline-none focus:border-gold transition-all duration-500 font-bold uppercase text-xs tracking-widest appearance-none cursor-pointer"
+                          >
+                            <option value="1-50" className="bg-[#0a0f16]">1-50 OPERATIVES</option>
+                            <option value="51-200" className="bg-[#0a0f16]">51-200 OPERATIVES</option>
+                            <option value="201-500" className="bg-[#0a0f16]">201-500 OPERATIVES</option>
+                            <option value="500+" className="bg-[#0a0f16]">500+ OPERATIVES</option>
+                          </select>
+                          <ChevronDown size={14} className="absolute right-6 top-1/2 -translate-y-1/2 text-gold pointer-events-none" />
+                        </div>
                       </div>
                     </div>
 
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full bg-primary text-secondary py-6 font-black uppercase tracking-[0.3em] text-xs flex items-center justify-center gap-3 hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50 mt-8"
+                      className="w-full bg-gold text-[#05070a] py-8 font-black uppercase tracking-[0.6em] text-xs flex items-center justify-center gap-4 hover:bg-white hover:scale-[1.02] active:scale-[0.98] transition-all duration-700 disabled:opacity-50 mt-12 shadow-[0_0_50px_rgba(197,160,89,0.3)]"
                     >
                       {isSubmitting ? (
-                         <div className="w-5 h-5 border-2 border-secondary/30 border-t-secondary rounded-full animate-spin" />
+                         <div className="w-6 h-6 border-2 border-[#05070a]/30 border-t-[#05070a] rounded-full animate-spin" />
                       ) : (
                         <>
-                          <span>Submit Subscription Request</span>
-                          <Send size={16} />
+                          <span>{t('subSubmit')}</span>
+                          <Send size={18} />
                         </>
                       )}
                     </button>
 
-                    <div className="flex items-center justify-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] opacity-20 pt-4">
-                      <Shield size={12} />
-                      <span>SSL Encrypted Secure Initialization</span>
+                    <div className="flex items-center justify-center gap-3 text-[10px] font-black uppercase tracking-[0.4em] text-gold/20 pt-8">
+                      <Shield size={14} className="text-gold/40" />
+                      <span>{t('subSecure')}</span>
                     </div>
                   </form>
                 </>
