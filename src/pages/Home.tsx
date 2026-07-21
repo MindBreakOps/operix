@@ -74,6 +74,7 @@ const MatrixText = ({ text }: { text: string }) => {
 };
 
 const NarrativeSection = ({ title, body, image, reverse = false }: { title: string, body: string, image: string, reverse?: boolean }) => {
+  const { t } = useTranslation();
   return (
     <section className="py-64 px-6 overflow-hidden relative">
       <div className={`max-w-7xl mx-auto flex flex-col ${reverse ? 'md:flex-row-reverse' : 'md:flex-row'} items-center gap-32 relative z-10`}>

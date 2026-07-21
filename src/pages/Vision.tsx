@@ -3,7 +3,9 @@ import { useTranslation } from 'react-i18next';
 import CoreBackground from '../components/CoreBackground';
 import { Globe, ArrowUpRight } from 'lucide-react';
 
-const Node = ({ city, desc, id, link, image }: { city: string; desc: string; id: string; link: string; image: string }) => (
+const Node = ({ city, desc, id, link, image }: { city: string; desc: string; id: string; link: string; image: string }) => {
+  const { t } = useTranslation();
+  return (
   <motion.a
     href={link}
     target="_blank"
@@ -46,6 +48,7 @@ const Node = ({ city, desc, id, link, image }: { city: string; desc: string; id:
     </div>
   </motion.a>
 );
+};
 
 const Philosophy = ({ title, sub, body }: { title: string; sub: string; body: string }) => (
   <motion.div
