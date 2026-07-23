@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { supabaseClient as supabase } from '../config/supabase';
 import { Loader2, ArrowUpRight, X } from 'lucide-react';
+import ThreeDImage from '../components/ThreeDImage';
 
 const ProductNode = () => (
   <div className="relative w-8 h-8">
@@ -211,14 +212,13 @@ export default function Services() {
                     title={isAr ? selectedService.title_ar : selectedService.title_en}
                   />
                 ) : (
-                  <motion.img
-                    initial={{ scale: 1.1, filter: 'grayscale(100%)' }}
-                    animate={{ scale: 1, filter: 'grayscale(0%)' }}
-                    transition={{ duration: 1 }}
-                    src={selectedService.media_url}
-                    alt={isAr ? selectedService.title_ar : selectedService.title_en}
-                    className="w-full h-full object-cover p-0"
-                  />
+                  <div className="w-full h-full perspective-1000">
+                    <ThreeDImage
+                      src={selectedService.media_url}
+                      alt={isAr ? selectedService.title_ar : selectedService.title_en}
+                      className="w-full h-full object-cover p-0"
+                    />
+                  </div>
                 )}
                 <button
                   onClick={() => setSelectedService(null)}

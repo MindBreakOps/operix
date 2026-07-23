@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { Play, CheckCircle, Users, X, Settings, BookOpen, Zap, Home } from 'lucide-react';
 
@@ -30,21 +30,58 @@ const BackgroundPulse = () => (
 );
 
 const PhoneFrame = () => {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const mouseXSpring = useSpring(x);
+  const mouseYSpring = useSpring(y);
+
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["5deg", "-5deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-5deg", "5deg"]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+    const xPct = mouseX / width - 0.5;
+    const yPct = mouseY / height - 0.5;
+    x.set(xPct);
+    y.set(yPct);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
   return (
     <motion.div
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        rotateY,
+        rotateX,
+        transformStyle: "preserve-3d",
+      }}
       animate={{
         y: [0, -20, 0],
-        rotateZ: [0, 1, 0, -1, 0]
       }}
       transition={{
-        duration: 6,
-        repeat: Infinity,
-        ease: "easeInOut"
+        y: {
+          duration: 6,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }
       }}
       className="relative w-[300px] h-[600px] border-[8px] border-navy rounded-[3rem] p-1 flex flex-col bg-navy shadow-[0_50px_100px_-20px_rgba(30,45,64,0.4)] overflow-hidden group"
     >
        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-7 bg-navy rounded-b-3xl z-20" />
-       <div className="flex-grow bg-primary rounded-[2.2rem] flex items-center justify-center overflow-hidden relative">
+       <div
+        style={{ transform: "translateZ(20px)" }}
+        className="flex-grow bg-primary rounded-[2.2rem] flex items-center justify-center overflow-hidden relative"
+       >
           <div className="absolute inset-0 bg-gradient-to-tr from-navy/5 to-transparent z-0" />
           <div className="relative z-10 flex flex-col items-center gap-4">
              <ProductNode />

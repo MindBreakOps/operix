@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import CoreBackground from '../components/CoreBackground';
+import ThreeDImage from '../components/ThreeDImage';
 
 
 /*
@@ -61,9 +62,9 @@ const ProductSection = ({ id, name, pillar, description, modules, image, useCase
             initial={{ opacity: 0, scale: 1.2 }}
             whileInView={{ opacity: 0.2, scale: 1 }}
             transition={{ duration: 2 }}
-            className="absolute top-0 right-0 w-80 aspect-[3/4] overflow-hidden grayscale -z-10 blur-[2px]"
+            className="absolute top-0 right-0 w-80 aspect-[3/4] overflow-hidden grayscale -z-10 blur-[2px] perspective-1000"
           >
-             <img src={image} alt={id} className="w-full h-full object-cover" />
+             <ThreeDImage src={image} alt={id} className="w-full h-full object-cover" />
           </motion.div>
         </div>
 

@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import CoreBackground from '../components/CoreBackground';
+import ThreeDImage from '../components/ThreeDImage';
 
 const Ticker = () => {
   const { t, i18n } = useTranslation();
@@ -103,9 +104,13 @@ const NarrativeSection = ({ title, body, image, reverse = false }: { title: stri
             whileInView={{ opacity: 1, clipPath: 'inset(0 0% 0 0)' }}
             viewport={{ once: true }}
             transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
-            className="aspect-[4/5] overflow-hidden grayscale hover:grayscale-0 transition-all duration-1000 shadow-[0_50px_100px_rgba(0,0,0,0.5)]"
+            className="aspect-[4/5] overflow-hidden grayscale hover:grayscale-0 transition-all duration-1000 shadow-[0_50px_100px_rgba(0,0,0,0.5)] perspective-1000"
           >
-            <img src={image} alt={title} className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-[3s]" />
+            <ThreeDImage
+              src={image}
+              alt={title}
+              className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-[3s]"
+            />
           </motion.div>
           {/* HUD Overlay */}
           <div className="absolute -top-8 -right-8 w-48 h-48 border-t-[1px] border-r-[1px] border-gold/30 pointer-events-none group-hover:scale-110 transition-transform duration-1000" />
