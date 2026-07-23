@@ -248,7 +248,7 @@
   "visitorTelemetryTitle": "Global Ecosystem Reach",
   "visitorTelemetrySub": "Real-time Visitor Distribution per Node",
   "nodeKSA": "Saudi Arabia",
-  "nodeUAE": "United Arab Emirates",
+  "nodeSD": "Sudan",
   "nodeUSA": "United States",
   "nodeUK": "United Kingdom",
   "nodeSingapore": "Singapore",
@@ -280,7 +280,7 @@
   "studioHasadTactical": "Maximizes social ROI by creating a unified digital layer for community engagement and sustainable resource management.",
   "roadmapTitle": "2030 COMMAND ROADMAP",
   "roadmapSub": "Strategic Regional Deployment Timeline",
-  "roadmap2026": "Initial core deployment across KSA and UAE industrial centers.",
+  "roadmap2026": "Initial core deployment across KSA and Sudan industrial centers.",
   "roadmap2027": "Expansion of Edge-Node infrastructure into major regional logistics hubs.",
   "roadmap2028": "Implementation of unified AI-Orchestration layers for enterprise predictive control.",
   "roadmap2030": "Full regional digital sovereignty achieved for the MENA industrial sector."
